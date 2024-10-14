@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark and Darker Build mode</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<h1>Build mode</h1>
+    <div id="class-selection">
+        <label for="class">Select Class:</label>
+        <select id="class" onchange="updatePerks()">
+			<option value="" disabled selected hidden></option>
+            <option value="Fighter">Fighter</option>
+			<option value="Barbarian">Barbarian</option>
+			<option value="Rogue">Rogue</option>
+			<option value="Ranger">Ranger</option>
+			<option value="Wizard">Wizard</option>
+			<option value="Cleric">Cleric</option>
+			<option value="Bard">Bard</option>
+			<option value="Warlock">Warlock</option>
+			<option value="Druid">Druid</option>
+        </select>
+    </div>
+
+		<div id="perk-section">
+            <h2>Select 4 Perks</h2>
+            <div id="perks"></div>
+        </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
