@@ -27,7 +27,8 @@ const classes = {
     },
 	Barbarian: {
         perks: [
-			{ name: 'Weapon Mastery', image: 'assets/fighter/Weapon_Mastery.png', description: 'Gain the ablity to use any weapon. While using non-native weapon to your class, lose -10% Physical Power Bonus on the weapon.' }
+			{ name: 'Axe Specialization', image: 'assets/barbarian/Axe_Specialization.png', description: 'While using axes, gain 3 Physical Buff Weapon Damage.' },
+            { name: 'Berserker', image: 'assets/barbarian/Berserker.png', description: 'Gain 0 to 33.3% Physical Power Bonus when missing 0% to 100% of your max health.' }
         ],
         abilities: [
 			{ name: 'Victory Strike	', image: 'assets/fighter/Skill_Victory_Strike.png', description: 'Your next attack within 10s deals an additional 20% Physical Power Bonus. If the target dies from this attack, heal for 15% Percent Max Health Healing.' }
@@ -36,13 +37,93 @@ const classes = {
 };
 
 let selectedClass = '';
+const maxSlots = 4;
+let allocatedPerks = [];
 
+// Update perks display based on selected class
 function updatePerks() {
     const classSelect = document.getElementById('class');
     selectedClass = classSelect.value;
+    const perksDiv = document.getElementById('perks');
     
-    if (selectedClass && classes[selectedClass]) {
-        alert('Fighter selected');
-    }
-};
+    perksDiv.innerHTML = ''; // Clear previous perks
 
+    if (selectedClass && classes[selectedClass] && classes[selectedClass].perks) {
+        classes[selectedClass].perks.forEach(perk => {
+            // Check if the perk is already allocated
+            if (!allocatedPerks.some(allocated => allocated.name === perk.name)) {
+                const perkDiv = document.createElement('div');
+                perkDiv.classList.add('perk');
+                perkDiv.onclick = () => allocatePerk(perk); // Allocate perk on click
+
+                const perkImage = document.createElement('img');
+                perkImage.src = perk.image;
+                perkImage.alt = perk.name;
+
+                const perkName = document.createElement('p');
+                perkName.textContent = perk.name;
+
+                perkDiv.appendChild(perkImage);
+                perkDiv.appendChild(perkName); // Add perk name
+                perksDiv.appendChild(perkDiv);
+            }
+        });
+    }
+}
+
+// Allocate perk to the first free slot
+function allocatePerk(perk) {
+    if (allocatedPerks.length < maxSlots) {
+        allocatedPerks.push(perk);
+        updateSlotsDisplay(); // Update the slots display
+        updatePerks(); // Update the perks list to hide the allocated perk
+    } else {
+        alert("You can only allocate up to 4 perks."); // Alert if all slots are full
+    }
+}
+
+// Update the display of perk slots
+function updateSlotsDisplay() {
+    const slotsDiv = document.getElementById('perk-slots');
+    slotsDiv.innerHTML = ''; // Clear previous slots display
+
+    allocatedPerks.forEach((perk, index) => {
+        const slotDiv = document.createElement('div');
+        slotDiv.classList.add('perk'); // Use the same class for styling
+        
+        // Right-click event to remove perk
+        slotDiv.oncontextmenu = (event) => {
+            event.preventDefault(); // Prevent the context menu from appearing
+            removePerk(index); // Remove perk from the slot
+        };
+
+        const perkImage = document.createElement('img');
+        perkImage.src = perk.image;
+        perkImage.alt = perk.name;
+
+        const perkName = document.createElement('p');
+        perkName.textContent = perk.name;
+
+        slotDiv.appendChild(perkImage);
+        slotDiv.appendChild(perkName);
+        slotsDiv.appendChild(slotDiv);
+    });
+}
+
+// Remove perk from a specific slot
+function removePerk(index) {
+    allocatedPerks.splice(index, 1); // Remove perk from allocatedPerks array
+    updateSlotsDisplay(); // Refresh the display
+    updatePerks(); // Refresh the perks list to show the removed perk again
+}
+
+// Call this function to ensure the perk slots section is included in your HTML
+function createSlotSection() {
+    const slotsDiv = document.createElement('div');
+    slotsDiv.id = 'perk-slots';
+    slotsDiv.classList.add('perk-slots'); // Add CSS class for styling
+    document.body.appendChild(slotsDiv);
+}
+
+// Initialize the slot section when the script runs
+createSlotSection();

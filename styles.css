@@ -1,0 +1,38 @@
+#perks {
+    display: grid;
+    grid-template-columns: repeat(4, 144px); /* Adjust 150px based on your desired minimum size */
+    gap: 5px; /* Space between grid items */
+}
+
+.perk {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.perk img {
+    width: 100px; /* Adjust the size of the perk image */
+    height: 100px;
+    object-fit: contain; /* Makes sure the image fits within the bounds */
+    margin-bottom: 10px;
+}
+
+.perk:hover {
+    cursor: pointer;
+}
+
+.perk-slots {
+    display: grid; /* Use grid layout for slots */
+    grid-template-columns: repeat(4, 144px); /* Same as perks */
+    gap: 5px; /* Space between slots */
+    margin-top: 20px; /* Space above the slots */
+}
+
+.perk-slots .perk {
+    border: 1px solid #ccc; /* Optional: add border */
+    border-radius: 8px; /* Keep consistency with perks */
+    background-color: #f9f9f9; /* Same background color */
+}
