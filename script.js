@@ -190,13 +190,13 @@ const classes = {
         perks: [
 			{ name: 'Dreamwalk', image: 'assets/druid/Dreamwalk.png', description: 'When you take damage while in human form, gain 5 Magical Power for 3s and become spiritual, phasing through targets and becoming invulnerable, but being unable to attack and use skills while still able to cast spells. 18s Cooldown in the form of a Debuff.' },
             { name: 'Enhanced Wildness', image: 'assets/druid/Enhanced_Wildness.png', description: 'While in animal form, gain 5 Move Speed Add and 10 Armor Rating.' },
-            { name: 'Force of Nature', image: 'assets/druid/Force_of_Nature.png', description: 'When Druid heals anyone (including self) and they are not at maximum health they gain 3 Physical Power for 3s on each tick of received healing.' },
+            { name: 'Force of Nature', image: 'assets/druid/Force_Of_Nature.png', description: 'When Druid heals anyone (including self) and they are not at maximum health they gain 3 Physical Power for 3s on each tick of received healing.' },
             { name: 'Herbal Sensing', image: 'assets/druid/Herbal_Sensing.png', description: 'Detect nearby herbs. 6m radius.' },
             { name: 'Natural Healing', image: 'assets/druid/Natural_Healing.png', description: 'Heal yourself and nearby allies 1 Magical Base Healing (10% Scaling) every 3s. 6m radius.' },
             { name: 'Shapeshift Mastery', image: 'assets/druid/Shapeshift_Mastery.png', description: 'Allows you to change Shapeshift form instantly, bypassing cast time entirely.' },
             { name: 'Spirit Bond', image: 'assets/druid/Spirit_Bond.png', description: 'You transfer 15% of Damage received by a party member within 6m to yourself, up to 20 damage per instance. 1s Cooldown in the form of a Debuff.' },
             { name: 'Spirit Magic Mastery', image: 'assets/druid/Spirit_Magic_Mastery.png', description: 'When you cast Spirit magic, gain 10 Magical Power.' },
-            { name: 'Sun and Moon', image: 'assets/druid/Sun_and_Moon.png', description: 'Nearby allies and self gain 3 Vigor and 5 Magical Power. 6m radius.' },
+            { name: 'Sun and Moon', image: 'assets/druid/Sun_And_Moon.png', description: 'Nearby allies and self gain 3 Vigor and 5 Magical Power. 6m radius.' },
             { name: 'Thorn Coat', image: 'assets/druid/Thorn_Coat.png', description: 'When melee attacked, return 5 True Physical Base Damage to the attacker.' }
         ],
         abilities: []
